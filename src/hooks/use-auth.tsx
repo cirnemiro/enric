@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { login, logOut, supabase } from "@tattoox/data";
 import { User } from "@supabase/supabase-js";
 import { useCookie } from "react-use";
 import { useRouter } from "next/router";
-import Login from "@/pages/login";
+import {login, logout} from "@/utils/auth"
+import Login from "@/components/login";
+import { supabase } from "@/clients/supabase";
 
 
 export function useAuthProvider() {
@@ -14,9 +15,10 @@ export function useAuthProvider() {
 
   useEffect(() => {
     // Check active sessions and sets the user
-    const session = supabase.auth.session();
 
-    setUser(session?.user ?? null);
+    // const session = supabase.auth.session();
+
+    // setUser(session?.user ?? null);
     setLoading(false);
 
     // Listen for changes on auth state (logged in, signed out, etc.)
@@ -31,7 +33,7 @@ export function useAuthProvider() {
     });
 
     return () => {
-      listener?.unsubscribe();
+    //   listener?.unsubscribe();
     };
   }, []);
 
@@ -39,7 +41,7 @@ export function useAuthProvider() {
     logged: !!user,
     user,
     login,
-    logOut,
+    logout,
   };
 }
 
@@ -47,13 +49,11 @@ const AuthContext = createContext<ReturnType<typeof useAuthProvider>>({
   logged: false,
   user: null,
   login,
-  logOut,
+  logout,
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const value = useAuthProvider();
-
-  console.log(value.logged);
 
   if (!value.user || !value.logged) {
     return <Login />;
