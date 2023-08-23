@@ -1,0 +1,14 @@
+login
+    login structure
+    login functionality
+    login backend
+menu
+profiles
+    gropup profile
+    individual profile
+sorteados
+    Wheel of Fortune
+    simple random choice
+invitations
+    group invitations    
+

@@ -44,10 +44,10 @@ export default function Form({
           {
             inputs.map((input)=>{
                 return(
-                    <>
+                    <div key={`${input.type}${input.name}`} >
                         {input.label && <label>{input.label}</label>}
-                        <input key={`${input.type}${input.name}`} type={input.type} {...register(input.name)} className={style.form__input}/>
-                    </>
+                        <input type={input.type} {...register(input.name)} className={style.form__input}/>
+                    </div>
                 )
             })
           }

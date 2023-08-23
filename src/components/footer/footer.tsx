@@ -1,7 +1,8 @@
 export default function Footer(){
 
     return(
-        <div>
+        <div onClick={()=>{console.log("asdfasd");
+        }}>
           footer
         </div>
     )

@@ -3,18 +3,30 @@ import Form, { IInputs } from "../form/form";
 import { useAuth } from "@/hooks/use-auth";
 import { useEffect, useState } from "react";
 import Modal from "../modal";
+import { log } from "console";
 
 interface ILoginForm {}
 
 export default function Login(){
 
-    const { user } = useAuth()
+    const { user, guest, setGuest } = useAuth()
 
     const [register, setRegister] = useState<boolean>(false)
     const [visible, setVisible] = useState<boolean>(false)
 
 
-    console.log("logged user: ", user);
+
+    const handleGuest = ()=>{
+        console.log(guest);
+        
+        setGuest(!guest)
+        console.log(guest);
+    }
+    
+    useEffect(() => {
+        console.log("guest value in effect:", guest);
+      }, [guest]);
+
     
     const formInputs: IInputs[] = [
         { type: "text", name: "email", label: "Email" },
@@ -35,6 +47,9 @@ export default function Login(){
             <Modal visible={visible} setVisible={setVisible}>
                 <div>modal body</div>
             </Modal>
+            <div>
+                <button onClick={()=>{handleGuest()}}>Keep going as visiton</button>
+            </div>
         </div>
     )
 }
