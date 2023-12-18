@@ -5,6 +5,9 @@ import type { NextRequest } from 'next/server'
 export function middleware(req: NextRequest) {
   console.log("middleware GEO",req.geo);
   console.log(req.headers.get("cf-ipcountry"));
+  console.log(req.headers.get("CF-IPCountry"));
+
+  
   console.log("HEADERS",req.headers);
   
   
