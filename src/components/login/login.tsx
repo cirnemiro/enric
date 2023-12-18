@@ -54,13 +54,3 @@ export default function Login(){
     )
 }
 
-export async function getServerSideProps({req}:any) {
-    const forwarded = req.headers["x-forwarded-for"]
-    const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
-    console.log("IP",ip);
-    console.log(req.geo);
-    console.log(req);
-    
-    
-    
-  }

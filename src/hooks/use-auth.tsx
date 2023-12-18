@@ -56,10 +56,10 @@ const AuthContext = createContext<ReturnType<typeof useAuthProvider>>({
 export function AuthProvider({ children }: { children: ReactNode }) {
   const value = useAuthProvider();
 
-  if (value.guest) {
+  // if (value.guest) {
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-  }
-  return <AuthContext.Provider value={value}><Login/></AuthContext.Provider>;
+  // }
+  // return <AuthContext.Provider value={value}><Login/></AuthContext.Provider>;
 
 }
 
