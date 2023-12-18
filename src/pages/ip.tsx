@@ -35,7 +35,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     props: {
       ipAddress,
       ipFromNext:ipFromNext || "nope",
-      req
+      req: req || "req undefined"
     },
   };
 };
