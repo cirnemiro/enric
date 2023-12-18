@@ -6,11 +6,11 @@ interface HomePageProps {
   ipFromNext: any
 }
 
-function HomePage({ ipAddress,ipFromNext,req }: any) {
+function HomePage({ ipAddress,req }: any) {
     console.log(req);
     
 
-    console.log(ipAddress,ipFromNext);
+    console.log(ipAddress);
     
   return (
     <div>
@@ -34,7 +34,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   return {
     props: {
       ipAddress,
-      ipFromNext:ipFromNext || "nope",
       req: req || "req undefined"
     },
   };
