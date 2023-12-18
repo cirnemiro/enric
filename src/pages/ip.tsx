@@ -24,17 +24,13 @@ function HomePage({ ipAddress,req }: any) {
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   // Obtiene la dirección IP del usuario desde el encabezado X-Forwarded-For o la dirección remota
   const ipAddress = context.req.headers['x-forwarded-for'] || context.req.connection.remoteAddress;
-  const ipFromNext = context.req.headers.geo
-  const req = context.req
 
-  console.log("REQ FROM SERVERSIDE PROPS",req);
   
 
   // Devuelve los datos como props
   return {
     props: {
       ipAddress,
-      req: req || "req undefined"
     },
   };
 };
