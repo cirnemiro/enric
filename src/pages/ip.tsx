@@ -13,7 +13,7 @@ function HomePage({ ipAddress,ipAddressCustoms }: any) {
     <div>
       <h1>Next.js Page</h1>
       <p>Dirección IP del usuario: {ipAddress}</p>
-      <p>Dirección ipcountry: {ipAddressCustoms}</p>
+      <p>Dirección ipcountry: {ipAddress}</p>
 
       {/* Contenido de la página */}
     </div>
@@ -23,7 +23,7 @@ function HomePage({ ipAddress,ipAddressCustoms }: any) {
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   // Obtiene la dirección IP del usuario desde el encabezado X-Forwarded-For o la dirección remota
   const ipAddress = context.req.headers['x-forwarded-for'] || context.req.connection.remoteAddress;
-  const ipAddressCustoms = context.req.headers['cf-ipcountry'] || "undefined00";
+  const ipAddressCustoms = context.req.headers['cf-ipcountry'] ||context.req.headers['CF-IPCountry'] ||"undefined00";
 
 
   
